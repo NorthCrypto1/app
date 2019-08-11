@@ -8,24 +8,11 @@ class App extends React.Component {
     this.state = {
       currentview: 'Navigation'
     }
-
-    this.changeView = this.changeView.bind(this);
   }
-
-  changeView(view) {
-    this.setState({
-      currentview: view
-    })
-  }
-
   render() {
-    let view = '';
-    if (this.state.currentView === "Navigation") {
-      view = <Navigation changeView={this.changeView} />
-    }
     return (
       <div className="App">
-        {view}
+        <Navigation />
         <Login />
       </div>
     )
