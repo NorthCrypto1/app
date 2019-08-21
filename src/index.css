@@ -20,7 +20,7 @@ code {
 /*Log in Styling*/
 
 .Login {
-  background: #2e77d5;
+  background: white;
   position: absolute;
   top: 22.5%;
   left: 17.5%;
@@ -62,7 +62,7 @@ code {
   border: none;
   height: 2rem;
   position: relative;
-  background: #2e77d5;
+  background: white;
   border-bottom: .1rem solid #23d160;
 }
 
@@ -125,15 +125,117 @@ code {
 
 .MuiBottomNavigation-root {
   bottom: 0;
-  position: absolute;
+  position: fixed;
   width: 100%;
   background-color: #d9d8d7;
+  z-index: 2000;
 }
 
 .icon-image {
   width: 25px;
 }
 
+/* Messaging styling */
+
+.displayConversation {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.message {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-text {
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.other {
+  align-items: flex-start;
+}
+
+.other .message-text {
+  margin-right: 25%;
+  background-color: #eee;
+  position: relative;
+}
+
+.other .message-text.one:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: -7px;
+  height: 20px;
+  width: 20px;
+  background: #eee;
+  border-bottom-right-radius: 15px;
+}
+
+.other .message-text.one:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: -10px;
+  width: 10px;
+  height: 20px;
+  background: white;
+  border-bottom-right-radius: 10px;
+}
+
+.you {
+  align-items: flex-end;
+}
+
+.you .message-text {
+  color: white;
+  margin-left: 25%;
+  background: linear-gradient(to bottom, #209cee 0%, #2e77d5 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+.you .message-text.one:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  right: -8px;
+  height: 20px;
+  width: 20px;
+  background: linear-gradient(to bottom, #209cee 0%, #2e77d5 100%);
+  background-attachment: fixed;
+  border-bottom-left-radius: 15px;
+}
+
+.you .message-text.one:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: -10px;
+  width: 10px;
+  height: 20px;
+  background: white;
+  border-bottom-left-radius: 10px;
+}
+
+.displayConversation li {
+  list-style-type: none;
+}
+
 .page {
   opacity: 0;
+}
+
+.MuiToolbar-root {
+  background: #618fe8;
 }
