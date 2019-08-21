@@ -14,13 +14,13 @@ export default function LabelBottomNavigation() {
     setValue(newValue);
   }
   function handlePages() {
-    if (value === 'recents') {
+    if (value === 'profile') {
       return <span>Recents</span>
-    } else if (value === 'favorites') {
+    } else if (value === 'wallet') {
       return <span>Favorites</span>
     } else if (value === 'nearby') {
       return <span>Nearby</span>
-    } else if (value === 'folder') {
+    } else if (value === 'messenger') {
       return <Messaging />
     }
   }
@@ -28,10 +28,10 @@ export default function LabelBottomNavigation() {
     <div>
       {handlePages()}
       <BottomNavigation value={value} onChange={handleChange} page={value}>
-        <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
-        <BottomNavigationAction label="Folder" value="folder" icon={<Icon>folder</Icon>} />
+        <BottomNavigationAction label="Profile" value="profile" icon={<Icon><img src="./icons/icons_identity.png" className="icon-image" /></Icon>} />
+        <BottomNavigationAction label="Wallet" value="wallet" icon={<Icon><img src="./icons/icons_wallet.png" className="icon-image" /></Icon>} />
+        <BottomNavigationAction label="Posts" value="posts" icon={<Icon><img src="./icons/icons_globe.png" className="icon-image" /> </Icon>} />
+        <BottomNavigationAction label="Messenger" value="messenger" icon={<Icon><img src="./icons/icons_partners.png" className="icon-image" /></Icon>} />
       </BottomNavigation>
     </div>
   );
