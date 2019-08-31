@@ -21,9 +21,10 @@ import DisplayConversation from './DisplayConversation';
 import Avatar from '@material-ui/core/Avatar';
 import { deepOrange, deepPurple } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
+import MessagingSend from './messagingSend';
 
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -80,22 +81,13 @@ const useStyles = makeStyles(theme => ({
         padding: '0 8px',
         ...theme.mixins.toolbar,
     },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
     avatar: {
-        margin: 10,
+        margin: 0,
     },
     orangeAvatar: {
-        margin: 10,
+        margin: 0,
         color: '#fff',
-        backgroundColor: deepOrange[500],
-    },
-    purpleAvatar: {
-        margin: 10,
-        color: '#fff',
-        backgroundColor: deepPurple[500],
+        backgroundColor: '#ffdd57',
     },
 }));
 
@@ -173,9 +165,9 @@ export default function MiniDrawer() {
                     ))}
                 </List>
             </Drawer>
-            <main className={classes.content}>
-                <div className={classes.toolbar} />
+            <main className="main">
                 <DisplayConversation />
+                <MessagingSend />
             </main>
         </div>
     );
