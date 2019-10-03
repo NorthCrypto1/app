@@ -15,16 +15,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import DisplayConversation from './DisplayConversation';
 import Avatar from '@material-ui/core/Avatar';
-import { deepOrange, deepPurple } from '@material-ui/core/colors';
-import Grid from '@material-ui/core/Grid';
-import MessagingSend from './messagingSend';
 
 
-const drawerWidth = 200;
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -70,21 +64,24 @@ const useStyles = makeStyles(theme => ({
         }),
         overflowX: 'hidden',
         width: theme.spacing(7) + 1,
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing(9) + 1,
-        },
     },
     toolbar: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        padding: '0 8px',
+        padding: theme.spacing(0, 1),
         ...theme.mixins.toolbar,
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
     },
     avatar: {
         margin: 0,
+        left: -8,
     },
     orangeAvatar: {
+        left: -8,
         margin: 0,
         color: '#fff',
         backgroundColor: '#ffdd57',
@@ -95,6 +92,11 @@ export default function MiniDrawer() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [selectedIndex, setSelectedIndex] = React.useState('Messenger');
+
+    function handleListItemClick(event, index) {
+        setSelectedIndex(index);
+    }
 
     function handleDrawerOpen() {
         setOpen(true);
@@ -132,8 +134,8 @@ export default function MiniDrawer() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Messenger
-          </Typography>
+                        {selectedIndex}
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -156,18 +158,18 @@ export default function MiniDrawer() {
                     </IconButton>
                 </div>
                 <Divider />
+
                 <List>
-                    {['Ken', 'Neonnexus', 'Tri', 'Peristeri'].map((text, index) => (
-                        <ListItem button key={text}>
+                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                        <ListItem button key={text} selected={selectedIndex === text} onClick={event => handleListItemClick(event, text)}>
                             <ListItemIcon><Avatar className={index % 2 === 0 ? classes.avatar : classes.orangeAvatar}>{slice(text)}</Avatar></ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
                 </List>
             </Drawer>
-            <main className="main">
-                <DisplayConversation />
-                <MessagingSend />
+            <main className={classes.content}>
+                <div className={classes.toolbar} />
             </main>
         </div>
     );
